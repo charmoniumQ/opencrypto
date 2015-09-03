@@ -4,9 +4,16 @@
 
 package opencrypto;
 
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Arrays;
+
 public class Prime {
 
+    private static ArrayList<Integer> factorList = new ArrayList<Integer>();
+
     private static int count, prime;
+    private static int[] factorArray;
     
     public Prime() {
     }
@@ -35,7 +42,7 @@ public class Prime {
     }
 
     //Generate a prime by generating a random number and seeing if it prime
-    public static int genPrime(int lower, int upper) {
+    public static int getPrime(int lower, int upper) {
 	count = (5 + upper - lower) * 2;
 	if (lower < 0 || upper < 1 || lower > upper) {
 	    return -1;
@@ -51,7 +58,7 @@ public class Prime {
     }
 
     //Generate a coprime by generating a random number and seeing if it coprime
-    public static int genCoprime(int lower, int upper, int coprime) {
+    public static int getCoprime(int lower, int upper, int coprime) {
 	count = coprime * 2;
 	if (lower < 0 || upper < 1 || lower > upper) {
 	    return -1;
@@ -64,6 +71,25 @@ public class Prime {
 	    count--;
 	}
 	return -1;
+    }
+
+    //Return the list of prime factors of a number in a collection
+    public static int[] getFactors(int n) {
+	factorList.clear();
+	for (int i = 2; i <= n; i = i + 2) {
+	    if (i == 4) {
+		i = 3;
+	    }
+	    while (n % i == 0) {
+		factorList.add(i);
+		n /= i;
+	    }
+	}
+	factorArray = new int[factorList.size()];
+	for (int i = 0; i < factorList.size(); i++) {
+	    factorArray[i] = factorList.get(i);
+	}
+	return factorArray;
     }
     
 }
