@@ -1,7 +1,6 @@
 *.class
 *.java~
 Test.java
-.gitignore
 
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
