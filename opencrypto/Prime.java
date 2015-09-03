@@ -4,7 +4,7 @@
 
 package opencrypto;
 
-import java.util.ArrayList;;
+import java.util.ArrayList;
 
 public class Prime {
 
@@ -16,7 +16,7 @@ public class Prime {
     public Prime() {
     }
 
-    //Check if a number is prime using trial division
+    //Check if a number is prime using trial division by odds
     public static boolean checkPrime(int x) {
 	if (x < 2) {
 	    return false;
@@ -24,11 +24,11 @@ public class Prime {
 	    return true;
 	}
 	for (int i = 2; i <= Math.sqrt(x); i = i + 2) {
-	    if (x % i == 0) {
-		return false;
-	    }
 	    if (i == 4) {
 		i = 3;
+	    }
+	    if (x % i == 0) {
+		return false;
 	    }
 	}
 	return true;
